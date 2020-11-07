@@ -3,3 +3,4 @@
 window.onload = function () {
   console.log("\"hello\" - 'world'");
 };
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uanMiXSwibmFtZXMiOlsid2luZG93Iiwib25sb2FkIiwiY29uc29sZSIsImxvZyJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsTUFBQSxDQUFBQyxNQUFBLEdBQUEsWUFBQTtBQUNBQyxFQUFBQSxPQUFBLENBQUFDLEdBQUE7QUFDQSxDQUZBIiwiZmlsZSI6Im1haW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJ3aW5kb3cub25sb2FkID0gKCkgPT4ge1xyXG4gICAgY29uc29sZS5sb2coYFwiaGVsbG9cIiAtICd3b3JsZCdgKVxyXG59OyJdfQ==

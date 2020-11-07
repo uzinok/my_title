@@ -2,23 +2,38 @@
 <html lang="ru">
 
 <head>
-  <include src="src/template/head.html"></include>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кастомный вывод "title"</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    main {
+      margin: 0 auto;
+      padding: 0 15px;
+      max-width: 900px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.5em;
+    }
+  </style>
 </head>
 
 <body>
-  <div style="display: none;">
-    <include src="resource/svg/sprite.svg"></include>
-  </div>
-  <include src="src/template/header.html"></include>
   <main>
-
-    <h2>Hello</h2>
-    <svg width="300" class="footer-developer-link__img" role="img">
-      <use xlink:href="#cat-logo"></use>
-    </svg>
-    <img width="300" src="img/img.jpg" alt="#">
-
-    <include src="src/template/footer.html"></include>
+    <h1>Кастомный вывод "title"</h1>
+    <p>Эй, жлоб! Где туз? Прячь юных съёмщиц в шкаф.</p>
+    <p><abbr title="По преданию, придумана профессором комбинаторики Санкт-Петербургского">33</abbr> <abbr>буквы</abbr>. По преданию, придумана профессором комбинаторики Санкт-Петербургского
+      <abbr title="государственного">государственного</abbr> университета. Прислал Виктор Баргачев</p>
   </main>
 </body>
 
