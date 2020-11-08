@@ -1,50 +1,66 @@
 window.onload = () => {
-    let titles = document.querySelectorAll('[title]');
+    let isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+    if (!isMobile.any()) {
+        let titles = document.querySelectorAll('[title]');
 
-    titles.forEach(element => {
-        element.setAttribute('data-title', element.getAttribute('title'));
-        element.removeAttribute('title');
-        let check = false;
+        for (let i = 0; i < titles.length; i++) {
+            let title = titles[i];
 
-        element.addEventListener('mouseover', (e) => {
-            if (!check) {
-                check = true;
-                let titleText = document.createElement('span');
-                titleText.classList.add('title-text');
-                document.body.append(titleText);
+            title.setAttribute('data-title', title.getAttribute('title'));
+            title.removeAttribute('title');
 
+            title.addEventListener('mouseover', (e) => {
+                let span = document.createElement('span');
+                span.innerHTML = title.getAttribute('data-title');
+                span.classList.add('title-text');
+                document.body.appendChild(span);
                 setTimeout(() => {
-                    titleText.innerHTML = e.target.getAttribute('data-title');
-                }, 0)
+                    span.classList.add('title-text-o');
+                })
 
-                let left = 15;
-                setTimeout(() => {
-                    if ((window.innerWidth - e.clientX) > 200) {
-                        titleText.style.left = e.clientX + "px";
-                    } else {
-                        left = window.innerWidth - 2 * titleText.offsetWidth;
-                        if (left < 0) left = 15;
-                        titleText.style.left = left + "px";
-                        if (e.clientX - (left + titleText.offsetWidth) > 0) {
-                            titleText.style.left = left + (e.clientX - (left + titleText.offsetWidth)) + "px";
-                        }
+                let top = e.target.offsetTop - span.offsetHeight - 2;
+                if (top < window.pageYOffset) top = window.pageYOffset;
+                span.style.top = top + "px";
+
+                if ((window.innerWidth - e.clientX) > 200) {
+                    span.style.left = e.clientX + "px";
+                } else {
+                    let left = window.innerWidth - 2 * span.offsetWidth;
+
+                    if (left < 0) left = 15;
+
+                    span.style.left = left + 2 + "px";
+
+                    if (e.clientX - (left + span.offsetWidth) > 0) {
+                        span.style.left = left + (e.clientX - (left + span.offsetWidth)) + "px";
                     }
-                    let top = e.target.offsetTop - titleText.offsetHeight - 2;
-                    if (top < window.pageYOffset) top = window.pageYOffset;
-                    titleText.style.top = top + "px";
-                }, 0);
+                }
 
-                e.target.addEventListener('mouseout', () => {
-                    titleText.remove();
-                    check = false;
+                e.target.addEventListener('mouseout', (e) => {
+                    span.remove();
                 })
-                document.addEventListener('scroll', () => {
-                    titleText.remove();
-                    check = false;
-                })
+            })
 
-            }
 
-        })
-    });
+        }
+    }
 };
