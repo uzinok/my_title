@@ -1,5 +1,5 @@
 window.onload = () => {
-    let isMobile = {
+    const isMobile = {
         Android: function () {
             return navigator.userAgent.match(/Android/i);
         },
@@ -20,25 +20,25 @@ window.onload = () => {
         }
     };
     if (!isMobile.any()) {
-        let titles = document.querySelectorAll('[title]');
+        const titles = document.querySelectorAll('[title]');
 
         for (let i = 0; i < titles.length; i++) {
-            let title = titles[i];
+            const title = titles[i];
 
             title.setAttribute('data-title', title.getAttribute('title'));
             title.removeAttribute('title');
 
             title.addEventListener('mouseover', (e) => {
-                let span = document.createElement('span');
+                const span = document.createElement('span');
                 span.innerHTML = title.getAttribute('data-title');
                 span.classList.add('title-text');
                 document.body.appendChild(span);
                 setTimeout(() => {
-                    span.classList.add('title-text-o');
-                })
+                    span.classList.add('title-text-v');
+                }, 0)
 
-                let top = e.target.offsetTop - span.offsetHeight - 2;
-                if (top < window.pageYOffset) top = window.pageYOffset;
+                const top = e.target.offsetTop - span.offsetHeight - 2;
+                if (top < document.body.scrollY) top = document.body.scrollY;
                 span.style.top = top + "px";
 
                 if ((window.innerWidth - e.clientX) > 200) {
@@ -59,8 +59,6 @@ window.onload = () => {
                     span.remove();
                 })
             })
-
-
         }
     }
 };
