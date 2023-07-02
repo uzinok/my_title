@@ -1,20 +1,30 @@
-abbr[data-title] {
-  border-bottom: none;
-  text-decoration: underline;
+abbr[data-title],
+abbr[title] {
+  text-transform: uppercase;
   text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
 }
 
 .title-text {
-  display: block;
-  width: fit-content;
-  position: absolute;
-  background-color: rgb(121, 179, 7);
-  color: #fff;
-  border: 1px solid #000;
-  padding: 5px;
+  position: fixed;
   opacity: 0;
-  transition: opacity 100ms;
+  transition: opacity 0.25s ease-in-out 0.25s;
   pointer-events: none;
+  text-align: center;
+
+  & span {
+    display: inline-block;
+    width: max-content;
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+    font-size: 12px;
+    color: #170c0c;
+    background-color: #119a25;
+    color: #fff;
+    border: 1px solid #000;
+  }
+
 }
 
 .title-text-v {
